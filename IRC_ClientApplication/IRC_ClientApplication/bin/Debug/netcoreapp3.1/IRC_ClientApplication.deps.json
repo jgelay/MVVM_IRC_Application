@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "IRC_ClientApplication/1.0.0": {
+        "runtime": {
+          "IRC_ClientApplication.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "IRC_ClientApplication/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

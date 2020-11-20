@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="IRC_ClientApplication.ChatView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IRC_ClientApplication"
+             mc:Ignorable="d" d:DesignWidth="800" Height="450">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="279*"/>
+            <RowDefinition Height="119*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Canvas HorizontalAlignment="Left" Height="450" VerticalAlignment="Top" Width="792" RenderTransformOrigin="1.832,1.482" Background="FloralWhite" Grid.RowSpan="3">
+            <Canvas Height="450" Width="239" Background="MediumPurple"/>
+            <ListView x:Name="chatListView" Height="381" Canvas.Left="246" Width="536" ItemsSource="{Binding Messages}" Canvas.Top="10">
+            </ListView>
+        </Canvas>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" Text="{Binding Message}" VerticalAlignment="Top" Width="460" Margin="246,84,0,0" BorderBrush="Black" Grid.Row="1"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="71" Margin="706,84,0,0" Height="42" Command="{Binding SendMessage}" Grid.Row="1"/>
+
+    </Grid>
+</UserControl>
