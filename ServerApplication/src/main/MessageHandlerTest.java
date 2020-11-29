@@ -1,3 +1,4 @@
+package main;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -20,8 +21,8 @@ class MessageHandlerTest {
 		//assertTrue(m.testMessage("Hello World\r\n"));
 		//assertTrue(m.testNick("JOSH"));
 		//assertTrue(m.testPrefix("JOSH"));
-		//assertTrue(m.testMessage(":JOSH PRIVMSG #default Test\r\n"));
-		assertTrue(m.testChannel("#default"));
+		assertTrue(m.testMessage(":JOSH PRIVMSG #default Test\r\n"));
+		//assertTrue(m.testChannel("#default"));
 		//assertTrue(m.testChannelString("A"));
 	}
 

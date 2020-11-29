@@ -1,6 +1,7 @@
+package main;
 import java.util.regex.Pattern;
 
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
+//import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -48,29 +49,9 @@ public class MessageHandler {
 		int numericreply = 0;
 		if (clientmessage.matches(message)){
 			System.out.print("Client message: " + clientmessage);
-			String[] nospcmsg = clientmessage.split(" ", 0);
+			String[] nospcmsg = clientmessage.split(" ", 3);
 			System.out.println(nospcmsg[1]);
 			switch(nospcmsg[1]) {
-				case "PASS" :
-					if (clienthandler.getServerPass().equals(nospcmsg[1]) == false){
-						//ERR_PASSWDMISMATCH
-						numericreply = 464;
-					}
-					else if (clienthandler.getServerPass().equals(nospcmsg[1])) {
-						
-					}
-				case "NICK" :
-					if (nospcmsg.length < 2) {
-						//ERR_NONICKNAMEGIVEN
-						numericreply = 431;
-					}
-					else if (!(nospcmsg[1].matches(nickname))){
-						//ERR_ERRONEUSNICKNAME
-						numericreply = 432;
-					}
-					else {
-						
-					}
 				case "USER" :
 				case "OPER" :
 				case "QUIT" :
@@ -168,6 +149,8 @@ public class MessageHandler {
 						String message = String.join(" ", Arrays.copyOfRange(nospcmsg, 3, nospcmsg.length-1));
 						this.sendMessage(this.clienthandler, message, nospcmsg[2]);
 					}
+				case "MSG" :
+					
 			}
 			
 			

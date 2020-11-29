@@ -36,25 +36,24 @@ namespace IRC_ClientApplication
             return state;
         }
 
-        public Boolean ClientRegistration(NetworkStream stream, string _userName, string )
+        public Boolean ClientRegistration(NetworkStream stream, string _userName, string _nickName, string _passWord)
         {
+            bool registered = false;
             string[] reply;
-            string input;
+            string input = _passWord + " " + _nickName + " " + _userName;
 
-
-            //password registration
-            do
+            //credentials registration
+            reply = ParsedMessage(stream, input);
+            MessageBox.Show(reply[0]);
+            if (reply[0].Equals("001\n"))
             {
-                //Console.Write("PASS" + ": ");
-                input = ;
-
-                reply = ParsedMessage(stream, input);
-            } while (!reply[1].Equals("NICK\n"));
+                registered = true;
+            }
+            
 
             //Console.WriteLine("You are now registered");
-            //await ircRunning(stream);
 
-            return;
+            return registered;
         }
         public string[] ParsedMessage(NetworkStream stream, string input)
         {
@@ -80,7 +79,7 @@ namespace IRC_ClientApplication
                 result = memstream.GetBuffer();
                 messageArray = Encoding.ASCII.GetString(result, 0, Convert.ToInt32(memstream.Length)).Split(' ');
             }
-
+         
             return messageArray;
         }
 

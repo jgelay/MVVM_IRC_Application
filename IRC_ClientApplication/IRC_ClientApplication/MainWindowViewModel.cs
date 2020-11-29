@@ -101,7 +101,7 @@ namespace IRC_ClientApplication
             }
             set
             {
-                _server = value;
+                _realname = value;
                 OnPropertyChanged("Realname");
             }
         }
@@ -114,7 +114,7 @@ namespace IRC_ClientApplication
             }
             set
             {
-                _server = value;
+                _nickname = value;
                 OnPropertyChanged("Nickname");
             }
         }
@@ -127,7 +127,7 @@ namespace IRC_ClientApplication
             }
             set
             {
-                _server = value;
+                _username = value;
                 OnPropertyChanged("Username");
             }
         }
@@ -140,7 +140,7 @@ namespace IRC_ClientApplication
             }
             set
             {
-                _server = value;
+                _password = value;
                 OnPropertyChanged("Password");
             }
         }
@@ -152,7 +152,6 @@ namespace IRC_ClientApplication
         public MainWindowViewModel()
         {
             this.client = new Client();
-            this.stream = client.GetClient().GetStream();
         }
         #endregion //Constructor
 
@@ -207,15 +206,19 @@ namespace IRC_ClientApplication
         {
             if (this.client.Connect(_server, _port))
             {
+                this.stream = client.GetClient().GetStream();
                 ViewModel = new RegisterViewModel();
-               
             }
             
         }
 
         private void RegisterToServer()
         {
-            ViewModel = new ChatViewModel();
+           if (this.client.ClientRegistration(this.stream, _username, _nickname, _password))
+            {
+                ViewModel = new ChatViewModel();
+            }
+           
         }
 
         void OnMessagesChanged(object sender, NotifyCollectionChangedEventArgs e)

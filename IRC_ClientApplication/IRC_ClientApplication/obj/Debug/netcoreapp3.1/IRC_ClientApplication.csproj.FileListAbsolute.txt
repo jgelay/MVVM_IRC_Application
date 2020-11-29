@@ -25,3 +25,30 @@ C:\Users\jgels\Source\Repos\IRC_ClientApplication\IRC_ClientApplication\obj\Debu
 C:\Users\jgels\Source\Repos\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\MainWindowView.g.cs
 C:\Users\jgels\Source\Repos\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\ChatView.baml
 C:\Users\jgels\Source\Repos\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\MainWindowView.baml
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\bin\Debug\netcoreapp3.1\IRC_ClientApplication.exe
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\bin\Debug\netcoreapp3.1\IRC_ClientApplication.deps.json
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\bin\Debug\netcoreapp3.1\IRC_ClientApplication.runtimeconfig.json
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\bin\Debug\netcoreapp3.1\IRC_ClientApplication.runtimeconfig.dev.json
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\bin\Debug\netcoreapp3.1\IRC_ClientApplication.dll
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\bin\Debug\netcoreapp3.1\IRC_ClientApplication.pdb
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\IRC_ClientApplication.csprojAssemblyReference.cache
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\ChatView.g.cs
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\ConnectView.g.cs
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\MainWindowView.g.cs
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\RegisterView.g.cs
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\App.g.cs
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\IRC_ClientApplication_MarkupCompile.cache
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\IRC_ClientApplication_MarkupCompile.lref
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\App.baml
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\ChatView.baml
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\ConnectView.baml
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\MainWindowView.baml
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\RegisterView.baml
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\IRC_ClientApplication.g.resources
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\IRC_ClientApplication.AssemblyInfoInputs.cache
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\IRC_ClientApplication.AssemblyInfo.cs
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\IRC_ClientApplication.csproj.CoreCompileInputs.cache
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\IRC_ClientApplication.dll
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\IRC_ClientApplication.pdb
+D:\Josiah\IRC Project V2\MVVM_IRC_Application\IRC_ClientApplication\IRC_ClientApplication\obj\Debug\netcoreapp3.1\IRC_ClientApplication.genruntimeconfig.cache
