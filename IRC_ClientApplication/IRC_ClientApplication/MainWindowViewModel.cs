@@ -40,6 +40,7 @@ namespace IRC_ClientApplication
                 OnPropertyChanged(nameof(ViewModel));
             }
         }
+
         public ObservableCollection<string> Messages
         {
             get
@@ -152,6 +153,7 @@ namespace IRC_ClientApplication
         public MainWindowViewModel()
         {
             this.client = new Client();
+            _messages = this.Messages;
         }
         #endregion //Constructor
 
@@ -162,10 +164,10 @@ namespace IRC_ClientApplication
         {
             get
             {
-                return _sendMessage ??= new RelayCommand(
+                return _sendMessage ??= new RelayCommand(async
                     x =>
                     {
-                        ShowMessage();
+                        await ShowMessageAsync();
                     });
             }
         }
@@ -186,20 +188,20 @@ namespace IRC_ClientApplication
         {
             get
             {
-                return _register ??= new RelayCommand(
+                return _register ??= new RelayCommand(async
                     x =>
                     {
-                        RegisterToServer();
+                        await RegisterToServerAsync();
                     });
             }
         }
 
         #endregion // Commands
 
-        private void ShowMessage()
+        private async Task ShowMessageAsync()
         {
             //MessageBox.Show(_message);
-            this._messages.Add(_message);
+            await this.client.Sender(this.stream, _message);
         }
 
         private void ConnectToServer()
@@ -212,11 +214,12 @@ namespace IRC_ClientApplication
             
         }
 
-        private void RegisterToServer()
+        private async Task RegisterToServerAsync()
         {
            if (this.client.ClientRegistration(this.stream, _username, _nickname, _password))
             {
                 ViewModel = new ChatViewModel();
+                await this.client.Receiver(this.stream, this._messages);
             }
            
         }

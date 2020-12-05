@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,8 +45,9 @@ namespace IRC_ClientApplication
             string input = _passWord + " " + _nickName + " " + _userName;
 
             //credentials registration
+            //MessageBox.Show(input);
             reply = ParsedMessage(stream, input);
-            MessageBox.Show(reply[0]);
+           
             if (reply[0].Equals("001\n"))
             {
                 registered = true;
@@ -79,17 +82,21 @@ namespace IRC_ClientApplication
                 result = memstream.GetBuffer();
                 messageArray = Encoding.ASCII.GetString(result, 0, Convert.ToInt32(memstream.Length)).Split(' ');
             }
-         
+            if (messageArray == null)
+            {
+                MessageBox.Show("No message received");
+            }
+            MessageBox.Show(messageArray.ToString());
             return messageArray;
         }
 
-        private async Task Sender(NetworkStream stream)
+        public async Task Sender(NetworkStream stream, string input)
         {
             try
             {
-                string consoleInput = await Task.Run(() => Console.ReadLine());
+                //string consoleInput = await Task.Run(() => Console.ReadLine());
 
-                string input = ":" + nickName + " " + consoleInput;
+                //string input = ":" + nickName + " " + consoleInput;
 
                 int byteCount = Encoding.ASCII.GetByteCount(input + 1);
                 byte[] sendData = new byte[byteCount];
@@ -109,7 +116,7 @@ namespace IRC_ClientApplication
 
         }
 
-        private async Task<String> Receiver(NetworkStream stream)
+        public async Task Receiver(NetworkStream stream, ObservableCollection<string> _messages)
         {
             byte[] respData = new byte[1024];
             int bytesRead;
@@ -122,11 +129,12 @@ namespace IRC_ClientApplication
 
             } while (stream.DataAvailable);
 
-            Console.Write(message);
-            return message.ToString();
+            _messages.Add(message.ToString());
+            await this.Receiver(stream, _messages);
+            return; 
         }
 
-        private async Task ircRunning(NetworkStream stream)
+        /*private async Task ircRunning(NetworkStream stream)
         {
             while (true)
             {
@@ -141,7 +149,7 @@ namespace IRC_ClientApplication
 
                 _ = await Receiver(stream);
             }
-        }
+        }*/
 
 
 

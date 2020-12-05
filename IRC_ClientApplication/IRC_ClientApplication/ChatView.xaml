@@ -13,11 +13,11 @@
         </Grid.RowDefinitions>
         <Canvas HorizontalAlignment="Left" Height="450" VerticalAlignment="Top" Width="792" RenderTransformOrigin="1.832,1.482" Background="FloralWhite" Grid.RowSpan="3">
             <Canvas Height="450" Width="239" Background="MediumPurple"/>
-            <ListView x:Name="chatListView" Height="381" Canvas.Left="246" Width="536" ItemsSource="{Binding Messages}" Canvas.Top="10">
+            <ListView x:Name="chatListView" Height="381" Canvas.Left="246" Width="536" ItemsSource="{Binding DataContext.Messages, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindowView}}, Mode=OneWay}" Canvas.Top="10">
             </ListView>
         </Canvas>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" Text="{Binding Message}" VerticalAlignment="Top" Width="460" Margin="246,84,0,0" BorderBrush="Black" Grid.Row="1"/>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="71" Margin="706,84,0,0" Height="42" Command="{Binding SendMessage}" Grid.Row="1"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" Text="{Binding DataContext.Message, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindowView}}, Mode=OneWayToSource}" VerticalAlignment="Top" Width="460" Margin="246,84,0,0" BorderBrush="Black" Grid.Row="1"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="71" Margin="706,84,0,0" Height="42" Command="{Binding DataContext.SendMessage, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindowView}}, Mode=OneWay}" Grid.Row="1"/>
 
     </Grid>
 </UserControl>

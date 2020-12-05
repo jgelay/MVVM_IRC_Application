@@ -53,7 +53,8 @@ public class ClientHandler implements Runnable {
 	        		registered = true;
 	        	} 
 	        	
-	        	wr.write(resp);
+	        	System.out.print(resp);
+	        	wr.write(resp + "\n");
         		wr.flush();
 	        } while (registered == false);
 	       
@@ -69,7 +70,12 @@ public class ClientHandler implements Runnable {
 				if (br.ready()) {
 					r = br.readLine();
 					System.out.println("Message received: " + r);
-	        					
+					for(ClientHandler member : currChannel.getMemberList()) {
+						member.getOutPutStreamWriter().write(this.getNickName() + ":" + r);
+						member.getOutPutStreamWriter().flush();
+					}
+					//wr.write(r);
+	        		//wr.flush();			
 				}
 			}
 		
