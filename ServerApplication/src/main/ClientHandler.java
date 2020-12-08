@@ -27,6 +27,9 @@ public class ClientHandler implements Runnable {
 	
 	private String nickName;
 	private String userName;
+	private volatile boolean connected;
+	private volatile boolean registered;
+	private ClientHandler currMember;
 	
 	public ClientHandler(Socket clientSocket, ChannelManager cm) {
 		this.socket = clientSocket;
@@ -37,8 +40,8 @@ public class ClientHandler implements Runnable {
 	public void run() {
 		try 
 		{
-			
-			boolean registered = false;
+			connected = true;
+			registered = false;
 			String resp;
 			is = socket.getInputStream();
 			br  = new BufferedReader(new InputStreamReader(is));
@@ -53,11 +56,12 @@ public class ClientHandler implements Runnable {
 	        		registered = true;
 	        	} 
 	        	
-	        	System.out.print(resp);
+	        	System.out.println(resp);
 	        	wr.write(resp + "\n");
         		wr.flush();
 	        } while (registered == false);
 	       
+	        
 	        currChannel = cm.getChannel("#default");
 	        currChannel.addMember(this);
 	        System.out.println("User joined default channel");
@@ -65,40 +69,79 @@ public class ClientHandler implements Runnable {
 	        for (ClientHandler cl : currChannel.getMemberList()) {
 	        	System.out.println(cl.getNickName());
 	        }
+	        readingMessages();
 	        
-			while (!r.equals("end")) {
-				if (br.ready()) {
-					r = br.readLine();
-					System.out.println("Message received: " + r);
-					for(ClientHandler member : currChannel.getMemberList()) {
-						member.getOutPutStreamWriter().write(this.getNickName() + ":" + r);
-						member.getOutPutStreamWriter().flush();
-					}
-					//wr.write(r);
-	        		//wr.flush();			
-				}
-			}
+			
 		
 		}
-		catch (Exception e)
+		catch (IOException e)
 		{
-			
+		
 		}
 		
 		try {
+			System.out.print("I am " + this.getNickName() + " and I am going to close now, goodbye.");
 			socket.close();
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
+	private void readingMessages() {
+		String r;
+		try {
+			while (connected) {
+				if (br.ready()) {
+					r = br.readLine();
+					System.out.println("Message received: " + r);
+					for(ClientHandler member : currChannel.getMemberList()) {
+						currMember = member;
+						System.out.println("Sending to Member: " + currMember.getNickName());
+						currMember.getOutPutStreamWriter().write(this.getNickName() + ":" + r);
+						currMember.getOutPutStreamWriter().flush();
+					}			
+				}
+			}
+		}
+		catch (IOException e) {
+			System.out.println("Client may have unexpectedly close");
+			if (currMember.getRegisteredState() == true) {
+				currChannel.removeMember(currMember);
+				cm.getNickNameList().remove(currMember.getNickName());
+				cm.getUserList().remove(currMember.getUserName());
+				try {
+					currMember.getOutPutStreamWriter().flush();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			currMember.setConnected(false);
+			readingMessages();
+		}
+		
+		return;
+	}
+	public TimerTask Test() {
+		System.out.println("Testing Timer");
+		return null;
+	}
 	public OutputStreamWriter getOutPutStreamWriter() {
 		return wr;
 	}
 	
 	public String getServerPass() {
 		return serverPass;
+	}
+	
+	public  void setConnected(boolean state) {
+		connected = state;
+		return;
+	}
+	public boolean getRegisteredState() {
+		return registered;
 	}
 	
 	public String client_Registration(String credentials) {
@@ -126,9 +169,9 @@ public class ClientHandler implements Runnable {
             			return ERR_ERRONEUSNICKNAME;
             		} else {
                 		cm.getNickNameList().add(messageArray[1]);
+                		nickName = messageArray[1];
                 		for (String name : cm.getNickNameList()) {
                 			System.out.println(name);
-                			nickName = name;
                 		}
             		}
             		
@@ -140,6 +183,7 @@ public class ClientHandler implements Runnable {
 			
             	if (!cm.getUserList().contains(messageArray[2]) || cm.getUserList().isEmpty()) {
             		cm.getUserList().add(messageArray[2]);
+            		userName = messageArray[2];
             		
             	} else if (cm.getUserList().contains(messageArray[2])){
             		return ERR_USERNAMEINUSE;

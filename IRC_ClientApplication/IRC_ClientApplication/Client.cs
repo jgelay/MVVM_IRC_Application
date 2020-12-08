@@ -82,11 +82,7 @@ namespace IRC_ClientApplication
                 result = memstream.GetBuffer();
                 messageArray = Encoding.ASCII.GetString(result, 0, Convert.ToInt32(memstream.Length)).Split(' ');
             }
-            if (messageArray == null)
-            {
-                MessageBox.Show("No message received");
-            }
-            MessageBox.Show(messageArray.ToString());
+            
             return messageArray;
         }
 
